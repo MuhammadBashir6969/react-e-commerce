@@ -10,7 +10,6 @@ interface FetchResponse {
 }
 
 const SideBar = () => {
-
   const {
     searchQuery,
     setSearchQuery,
@@ -62,6 +61,7 @@ const SideBar = () => {
   };
 
   const handleRadioChangeCategories = (category: string) => {
+    console.log("Selected category:", category);
     setSelectedCategory(category);
   };
 
@@ -71,7 +71,7 @@ const SideBar = () => {
 
   const handleResetFilters = () => {
     setSearchQuery("");
-    setSelectedCategory("")
+    setSelectedCategory("");
     setMinPrice(undefined);
     setMaxPrice(undefined);
   };
@@ -121,7 +121,7 @@ const SideBar = () => {
                 className="mr-2 w-[16px] h-[16px]"
                 checked={selectedCategory === category}
               />
-              {category.toLocaleUpperCase()}
+              {category.toUpperCase()}
             </label>
           ))}
         </section>
@@ -152,6 +152,3 @@ const SideBar = () => {
 };
 
 export default SideBar;
-function setSelectedCategory(category: string) {
-  throw new Error("Function not implemented.");
-}

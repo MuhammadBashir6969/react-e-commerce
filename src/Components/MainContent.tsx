@@ -14,7 +14,7 @@ const MainContent = () => {
   const itemsPerPage = 12;
 
   useEffect(() => {
-    let url = `https://dummyjson.com/products?limits=${itemsPerPage}&skip=${
+    let url = `https://dummyjson.com/products?limit=${itemsPerPage}&skip=${
       (currentPage - 1) * itemsPerPage
     }`;
 
@@ -32,6 +32,21 @@ const MainContent = () => {
         console.error("Error fetching data", error);
       });
   }, [currentPage, keyword]);
+
+  const getFilteredProducts = () => {
+    let filteredProducts = products;
+
+    if (selectedCategory) {
+      filteredProducts = filteredProducts.filter(
+        (product) =>
+          product.category === selectedCategory
+      );
+
+      console.log(filteredProducts);
+    }
+  };
+
+  getFilteredProducts()
 
   return (
     <section className="xl:w-[55rem] lg:w[55rem] sm:w-[40rem] xs:w[20rem] p-5">
